@@ -9,67 +9,103 @@ namespace SHoppingCart
             InitializeComponent();
         }
 
+        //function or Method
+        // 1 return data  ส่งค่ากลับ
+        // 2 no return data
+        // return str "100"
+        // return int 100
+
+        
+        
         private void CheckOut_Click(object sender, EventArgs e)
         {
-            if (cbCoffee.Checked) { }
-            // อ่านค่าtb  Coffee
-            string strCoffeePrice = tbCoffeePrice.Text;
-            string strCoffeeQuantity = tbCoffeeQuantity.Text;
-
-            // อ่านค่าtb Greentea
-            string strGreenTeaPrice = tbGreenTeaPrice.Text;
-            string strGreenTeaQuantity = tbGreenTeaQuantity.Text;
-
-            // อ่านค่า Cash
-            string strCash = tbCash.Text;
-
-            int iCoffeePrice = 0;
-            int iCoffeeQuantity = 0;
-            int iGreenTeaPrice = 0;
-            int iGreenTeaQuantity = 0;
-            int iTotal = 0;
-            int iCash = 0;
-            int iChange = 0;
-
-            try
+           // ฟังก์ชันคำนวณราคา สำหรับกาแฟและชาเขียว รวมถึงส่วนลด
+           double getPriceFromSelectedItems()
             {
-                // ตรวจว่าได้ติ้ก checkboxCoffee มัะ้ย
-                if (cbCoffee.Checked)
+                // อ่านค่าจาก TextBox และ CheckBox
+                string strCoffeePrice = tbCoffeePrice.Text;
+                string strCoffeeQuantity = tbCoffeeQuantity.Text;
+                string strGreenTeaPrice = tbGreenTeaPrice.Text;
+                string strGreenTeaQuantity = tbGreenTeaQuantity.Text;
+                string strCash = tbCash.Text;
+
+                int iCoffeePrice = 0;
+                int iCoffeeQuantity = 0;
+                int iGreenTeaPrice = 0;
+                int iGreenTeaQuantity = 0;
+
+                try
                 {
-                    // แปลงค่าจาก string เปน int
-                    iCoffeePrice = int.Parse(strCoffeePrice);
-                    iCoffeeQuantity = int.Parse(strCoffeeQuantity);
+                    // ตรวจว่าได้ติ้ก checkboxCoffee มัะ้ย
+                    if (cbCoffee.Checked)
+                    {
+                        // แปลงค่าจาก string เปน int
+                        iCoffeePrice = int.Parse(strCoffeePrice);
+                        iCoffeeQuantity = int.Parse(strCoffeeQuantity);
+                    }
+
+                    // ตรวจสอบ checkboxGreen Tea
+                    if (cbGreenTea.Checked)
+                    {
+                        iGreenTeaPrice = int.Parse(strGreenTeaPrice);
+                        iGreenTeaQuantity = int.Parse(strGreenTeaQuantity); ;
+                    }
+
                 }
 
-                // ตรวจสอบ checkboxGreen Tea
-                if (cbGreenTea.Checked)
+                catch (Exception ex)
                 {
-                    iGreenTeaPrice = int.Parse(strGreenTeaPrice);
-                    iGreenTeaQuantity = int.Parse(strGreenTeaQuantity);
+                    // แปลงค่าผิดพลาด  จะเปน0
+                    iCoffeePrice = 0;
+                    iCoffeeQuantity = 0;
+                    iGreenTeaPrice = 0;
+                    iGreenTeaQuantity = 0;
                 }
 
-                //อ่านค่า Cash
-                iCash = int.Parse(strCash);
+                // คำนวณราคาสำหรับกาแฟและชาเขียว
+                int iTotalCoffee = iCoffeePrice * iCoffeeQuantity;
+                int iTotalGreenTea = iGreenTeaPrice * iGreenTeaQuantity;
 
+                
+
+                 // ใช้ส่วนลดกับแต่ละรายการ
+                 double dTotalCoffee = getDiscountPrice(iTotalCoffee, "BEV");
+                 double dTotalGreenTea = getDiscountPrice(iTotalGreenTea, "BEV");
+
+                 // คืนค่าราคารวมหลังจากหักส่วนลด
+                 return dTotalCoffee + dTotalGreenTea;
+                }
             }
-
-            catch (Exception ex)
+            /// <summary>
+            /// ฟังก์ชันคำนวณราคาโดยหักส่วนลด
+            /// </summary>
+            /// <param name="pTotal">ราคารวมของสินค้า</param>
+            /// <param name="pType">ประเภทของสินค้า: ALL, BEV, FOOD</param>
+            /// <returns>ราคาหลังหักส่วนลด</returns>
+            double getDiscountPrice(int pTotal, string pType = "ALL")
             {
-                // แปลงค่าผิดพลาด  จะเปน0
-                iCoffeePrice = 0;
-                iCoffeeQuantity = 0;
-                iGreenTeaPrice = 0;
-                iGreenTeaQuantity = 0;
-                iCash = 0;
+                double dDiscount = 0;
+
+                // ใช้ส่วนลดตามประเภทของสินค้า
+                if (pType == "BEV" && cbDiscountBev.Checked)
+                {
+                    dDiscount = int.Parse(tbDiscountBev.Text);
+                }
+
+                // คืนค่าราคาหลังจากหักส่วนลด
+                return pTotal - (pTotal * dDiscount / 100);
             }
 
-            //คำนวน ยอดรอมม
-            iTotal = (iCoffeePrice * iCoffeeQuantity) + (iGreenTeaPrice * iGreenTeaQuantity);
-
-            //คำนวนเงินทอน
-            iChange = iCash - iTotal;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // แสดงราคาหลังหักส่วนลดใน tbTotal
+            tbTotal.Text = getPriceFromSelectedItems().ToString();
+        }
+        //คำนวนเงินทอน
+        iChange = iCash - iTotal;
 
             //แสดงยอดรวม  เงินทอน ใน TextBox
+            //tbTotal.Text = GetPriceFromSelectedItems().ToString();
             tbTotal.Text = iTotal.ToString();
             tbChange.Text = iChange.ToString();
 
@@ -132,9 +168,24 @@ namespace SHoppingCart
             tb10.Text = "";
             tb5.Text = "";
             tb1.Text = "";
+            
             cbCoffee.Checked = false;
             cbGreenTea.Checked = false;
+            cbNoodle.Checked = false;
+            cbPizza.Checked = false;
+            cbFood.Checked = false;
+            cbBeverage.Checked = false;
+            cbFood.Checked = false;
         }
 
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
+
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

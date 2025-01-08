@@ -58,18 +58,37 @@
             tb5 = new TextBox();
             tb1 = new TextBox();
             btClear = new Button();
+            groupBox1 = new GroupBox();
+            cbPizza = new CheckBox();
+            cbNoodle = new CheckBox();
+            tbPizzaQuantity = new TextBox();
+            tbNoodleQuantity = new TextBox();
+            tbPizzaPrice = new TextBox();
+            tbNoodlePrice = new TextBox();
+            GFood = new GroupBox();
+            cbBeverage = new CheckBox();
+            cbAll = new CheckBox();
+            tbBeverage = new TextBox();
+            tbAll = new TextBox();
+            GDiscount = new GroupBox();
+            cbFood = new CheckBox();
+            tbFood = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            GDiscount.SuspendLayout();
             SuspendLayout();
             // 
             // tbCoffeePrice
             // 
-            tbCoffeePrice.Location = new Point(220, 203);
+            tbCoffeePrice.Location = new Point(220, 84);
             tbCoffeePrice.Name = "tbCoffeePrice";
             tbCoffeePrice.Size = new Size(125, 27);
             tbCoffeePrice.TabIndex = 0;
             // 
             // tbGreenTeaPrice
             // 
-            tbGreenTeaPrice.Location = new Point(220, 240);
+            tbGreenTeaPrice.Location = new Point(220, 121);
             tbGreenTeaPrice.Name = "tbGreenTeaPrice";
             tbGreenTeaPrice.Size = new Size(125, 27);
             tbGreenTeaPrice.TabIndex = 1;
@@ -84,14 +103,14 @@
             // 
             // tbCoffeeQuantity
             // 
-            tbCoffeeQuantity.Location = new Point(360, 203);
+            tbCoffeeQuantity.Location = new Point(360, 84);
             tbCoffeeQuantity.Name = "tbCoffeeQuantity";
             tbCoffeeQuantity.Size = new Size(125, 27);
             tbCoffeeQuantity.TabIndex = 3;
             // 
             // tbGreenTeaQuantity
             // 
-            tbGreenTeaQuantity.Location = new Point(360, 243);
+            tbGreenTeaQuantity.Location = new Point(360, 124);
             tbGreenTeaQuantity.Name = "tbGreenTeaQuantity";
             tbGreenTeaQuantity.Size = new Size(125, 27);
             tbGreenTeaQuantity.TabIndex = 4;
@@ -118,7 +137,7 @@
             // cbCoffee
             // 
             cbCoffee.AutoSize = true;
-            cbCoffee.Location = new Point(117, 206);
+            cbCoffee.Location = new Point(117, 87);
             cbCoffee.Name = "cbCoffee";
             cbCoffee.Size = new Size(75, 24);
             cbCoffee.TabIndex = 7;
@@ -128,7 +147,7 @@
             // cbGreenTea
             // 
             cbGreenTea.AutoSize = true;
-            cbGreenTea.Location = new Point(117, 246);
+            cbGreenTea.Location = new Point(117, 127);
             cbGreenTea.Name = "cbGreenTea";
             cbGreenTea.Size = new Size(97, 24);
             cbGreenTea.TabIndex = 8;
@@ -308,11 +327,183 @@
             btClear.UseVisualStyleBackColor = true;
             btClear.Click += btClear_Click;
             // 
+            // groupBox1
+            // 
+            groupBox1.Location = new Point(109, 43);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(386, 137);
+            groupBox1.TabIndex = 30;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Beverage";
+            // 
+            // cbPizza
+            // 
+            cbPizza.AutoSize = true;
+            cbPizza.Location = new Point(117, 274);
+            cbPizza.Name = "cbPizza";
+            cbPizza.Size = new Size(65, 24);
+            cbPizza.TabIndex = 36;
+            cbPizza.Text = "Pizza";
+            cbPizza.UseVisualStyleBackColor = true;
+            // 
+            // cbNoodle
+            // 
+            cbNoodle.AutoSize = true;
+            cbNoodle.Location = new Point(117, 234);
+            cbNoodle.Name = "cbNoodle";
+            cbNoodle.Size = new Size(81, 24);
+            cbNoodle.TabIndex = 35;
+            cbNoodle.Text = "Noodle";
+            cbNoodle.UseVisualStyleBackColor = true;
+            // 
+            // tbPizzaQuantity
+            // 
+            tbPizzaQuantity.Location = new Point(360, 271);
+            tbPizzaQuantity.Name = "tbPizzaQuantity";
+            tbPizzaQuantity.Size = new Size(125, 27);
+            tbPizzaQuantity.TabIndex = 34;
+            // 
+            // tbNoodleQuantity
+            // 
+            tbNoodleQuantity.Location = new Point(360, 231);
+            tbNoodleQuantity.Name = "tbNoodleQuantity";
+            tbNoodleQuantity.Size = new Size(125, 27);
+            tbNoodleQuantity.TabIndex = 33;
+            // 
+            // tbPizzaPrice
+            // 
+            tbPizzaPrice.Location = new Point(220, 268);
+            tbPizzaPrice.Name = "tbPizzaPrice";
+            tbPizzaPrice.Size = new Size(125, 27);
+            tbPizzaPrice.TabIndex = 32;
+            // 
+            // tbNoodlePrice
+            // 
+            tbNoodlePrice.Location = new Point(220, 231);
+            tbNoodlePrice.Name = "tbNoodlePrice";
+            tbNoodlePrice.Size = new Size(125, 27);
+            tbNoodlePrice.TabIndex = 31;
+            // 
+            // GFood
+            // 
+            GFood.Location = new Point(109, 190);
+            GFood.Name = "GFood";
+            GFood.Size = new Size(386, 137);
+            GFood.TabIndex = 37;
+            GFood.TabStop = false;
+            GFood.Text = "Food";
+            // 
+            // cbBeverage
+            // 
+            cbBeverage.AutoSize = true;
+            cbBeverage.Location = new Point(117, 417);
+            cbBeverage.Name = "cbBeverage";
+            cbBeverage.Size = new Size(93, 24);
+            cbBeverage.TabIndex = 43;
+            cbBeverage.Text = "Beverage";
+            cbBeverage.UseVisualStyleBackColor = true;
+            // 
+            // cbAll
+            // 
+            cbAll.AutoSize = true;
+            cbAll.Location = new Point(117, 377);
+            cbAll.Name = "cbAll";
+            cbAll.Size = new Size(49, 24);
+            cbAll.TabIndex = 42;
+            cbAll.Text = "All";
+            cbAll.UseVisualStyleBackColor = true;
+            cbAll.CheckedChanged += checkBox4_CheckedChanged;
+            // 
+            // tbBeverage
+            // 
+            tbBeverage.Location = new Point(339, 412);
+            tbBeverage.Name = "tbBeverage";
+            tbBeverage.Size = new Size(125, 27);
+            tbBeverage.TabIndex = 41;
+            // 
+            // tbAll
+            // 
+            tbAll.Location = new Point(339, 374);
+            tbAll.Name = "tbAll";
+            tbAll.Size = new Size(125, 27);
+            tbAll.TabIndex = 40;
+            // 
+            // GDiscount
+            // 
+            GDiscount.Controls.Add(label3);
+            GDiscount.Controls.Add(label2);
+            GDiscount.Controls.Add(label1);
+            GDiscount.Controls.Add(tbFood);
+            GDiscount.Controls.Add(cbFood);
+            GDiscount.Location = new Point(109, 333);
+            GDiscount.Name = "GDiscount";
+            GDiscount.Size = new Size(386, 157);
+            GDiscount.TabIndex = 44;
+            GDiscount.TabStop = false;
+            GDiscount.Text = "Discount";
+            // 
+            // cbFood
+            // 
+            cbFood.AutoSize = true;
+            cbFood.Location = new Point(8, 123);
+            cbFood.Name = "cbFood";
+            cbFood.Size = new Size(65, 24);
+            cbFood.TabIndex = 0;
+            cbFood.Text = "Food";
+            cbFood.UseVisualStyleBackColor = true;
+            cbFood.CheckedChanged += checkBox5_CheckedChanged;
+            // 
+            // tbFood
+            // 
+            tbFood.Location = new Point(230, 118);
+            tbFood.Name = "tbFood";
+            tbFood.Size = new Size(125, 27);
+            tbFood.TabIndex = 46;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(359, 48);
+            label1.Name = "label1";
+            label1.Size = new Size(21, 20);
+            label1.TabIndex = 45;
+            label1.Text = "%";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(359, 82);
+            label2.Name = "label2";
+            label2.Size = new Size(21, 20);
+            label2.TabIndex = 47;
+            label2.Text = "%";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(359, 121);
+            label3.Name = "label3";
+            label3.Size = new Size(21, 20);
+            label3.TabIndex = 48;
+            label3.Text = "%";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(983, 618);
+            Controls.Add(cbBeverage);
+            Controls.Add(cbAll);
+            Controls.Add(tbBeverage);
+            Controls.Add(tbAll);
+            Controls.Add(GDiscount);
+            Controls.Add(cbPizza);
+            Controls.Add(cbNoodle);
+            Controls.Add(tbPizzaQuantity);
+            Controls.Add(tbNoodleQuantity);
+            Controls.Add(tbPizzaPrice);
+            Controls.Add(tbNoodlePrice);
+            Controls.Add(GFood);
             Controls.Add(btClear);
             Controls.Add(tb1);
             Controls.Add(tb5);
@@ -343,8 +534,11 @@
             Controls.Add(tbTotal);
             Controls.Add(tbGreenTeaPrice);
             Controls.Add(tbCoffeePrice);
+            Controls.Add(groupBox1);
             Name = "Form1";
             Text = "Form1";
+            GDiscount.ResumeLayout(false);
+            GDiscount.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -381,5 +575,23 @@
         private TextBox tb5;
         private TextBox tb1;
         private Button btClear;
+        private GroupBox groupBox1;
+        private CheckBox cbPizza;
+        private CheckBox cbNoodle;
+        private TextBox tbPizzaQuantity;
+        private TextBox tbNoodleQuantity;
+        private TextBox tbPizzaPrice;
+        private TextBox tbNoodlePrice;
+        private GroupBox GFood;
+        private CheckBox cbBeverage;
+        private CheckBox cbAll;
+        private TextBox tbBeverage;
+        private TextBox tbAll;
+        private GroupBox GDiscount;
+        private CheckBox cbFood;
+        private Label label3;
+        private Label label2;
+        private Label label1;
+        private TextBox tbFood;
     }
 }
